@@ -318,28 +318,22 @@ a {
   * {
     font-size: 18px;
   }
-
   #inner {
     height: 100%;
     width: 100%;
   }
-
   #msg {
     height: 60px;
   }
-
   .input {
     font-size: 20px;
   }
-
   .sideBox {
     display: none;
   }
-
   #name {
     display: none;
   }
-
   #outer {
     display: flex;
     justify-content: center;
@@ -347,7 +341,6 @@ a {
     align-content: stretch;
     flex-direction: column;
   }
-
   #lobby {
     display: flex;
     justify-content: center;
@@ -355,7 +348,6 @@ a {
     align-content: stretch;
     flex-direction: row;
   }
-
   #topLevel {
     display: none;
   }
@@ -368,7 +360,6 @@ a {
     align-content: stretch;
     flex-direction: column;
   }
-
   #lobby {
     display: flex;
     justify-content: center;
@@ -381,7 +372,6 @@ a {
   #lobbyRightBar {
     display: none;
   }
-
   #container {
     width: 100%;
   }

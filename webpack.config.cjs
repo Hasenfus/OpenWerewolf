@@ -1,21 +1,11 @@
-import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
-import pathBrowserify from 'path-browserify';
-import url from 'url';
-import util from 'util';
-import streamBrowserify from 'stream-browserify';
-import buffer from 'buffer';
-import cryptoBrowserify from 'crypto-browserify';
-import webpack from 'webpack';
+const path = require('path');
+const webpack = require('webpack');
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-export default {
+module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   entry: './client/js/client.tsx',
   output: {
-    path: resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     clean: true
   },
@@ -42,12 +32,12 @@ export default {
       '.mjs': ['.mjs', '.mts']
     },
     fallback: {
-      "path": false,
-      "url": false,
-      "util": false,
-      "stream": false,
-      "buffer": false,
-      "crypto": false,
+      "path": require.resolve("path-browserify"),
+      "url": require.resolve("url/"),
+      "util": require.resolve("util/"),
+      "stream": require.resolve("stream-browserify"),
+      "buffer": require.resolve("buffer/"),
+      "crypto": require.resolve("crypto-browserify"),
       "fs": false,
       "http": false,
       "net": false,
@@ -64,4 +54,4 @@ export default {
   ],
   devtool: 'source-map',
   target: ['web', 'es2020']
-};
+}; 

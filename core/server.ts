@@ -13,11 +13,11 @@
 
 "use strict";
 
-import { Socket } from "../node_modules/@types/socket.io";
-import { User, Message } from "./user";
-import { Game } from "./game";
-import { Utils, Colors } from "./utils";
-const grawlix = require("grawlix");
+import { Socket } from "socket.io";
+import { User, Message } from "./user.ts";
+import { Game } from "./game.ts";
+import { Utils, Colors } from "./utils.ts";
+import grawlix from "grawlix";
 
 export class Server {
   private _users: Array<User> = [];
@@ -205,10 +205,10 @@ export class Server {
       );
       return false;
     }
-    if (grawlix.isObscene(username)) {
-      user.registrationError("Usernames can't contain profanity");
-      return false;
-    }
+    // if (grawlix.isObscene(username)) {
+    //   user.registrationError("Usernames can't contain profanity");
+    //   return false;
+    // }
     return true;
   }
   public addUser(
@@ -405,7 +405,7 @@ export class Server {
               );
             }
           } else if (user.game != undefined && this.validateMessage(msg)) {
-            msg = grawlix(msg, { style: "asterix" });
+            msg = grawlix(msg, { style: "ascii" });
             if (user.game.isUser(id)) {
               user.game.receive(user, msg);
               console.log("received by game");

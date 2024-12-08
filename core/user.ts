@@ -14,8 +14,8 @@
 "use strict";
 
 import { Socket } from "socket.io";
-import { NameColorPair, Stopwatch, Colors } from "./utils";
-import { Game } from "./game";
+import { NameColorPair, Stopwatch, Colors } from "./utils.ts";
+import { Game } from "./game.ts";
 //set this to what the admin password should be
 const password = "goat";
 

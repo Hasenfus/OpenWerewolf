@@ -1,18 +1,9 @@
 {
   "games": [
     {
-      "name": "Classic",
-      "location": "./games/classic/classic",
-      "title": "OpenWerewolf-Classic",
-      "author": "James Craster",
-      "license": "Apache-2.0"
-    },
-    {
-      "name": "OneDay",
-      "location": "./games/oneDay/oneDay",
-      "title": "OpenWerewolf-OneDay",
-      "author": "James Craster",
-      "license": "Apache-2.0"
+      "name": "TownOfTuring",
+      "location": "./games/townofturing.js",
+      "description": "A modern take on the classic Werewolf/Mafia game with AI players"
     }
   ]
 }

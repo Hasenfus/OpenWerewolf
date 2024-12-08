@@ -13,8 +13,10 @@
 "use strict";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import LobbyItem from "./components";
+import {LobbyItem} from "./components";
 import RoleSelection from "./roleSelection";
+import io from "socket.io-client";
+
 
 declare let SimpleBar: any;
 
@@ -134,7 +136,7 @@ export class User {
   }
 }
 export const user = new User();
-//ReactDOM.render(<RoleSelection user={user} />, $("#roleSelection")[0]);
+ReactDOM.render(<RoleSelection user={user} />, document.getElementById("roleSelection"));
 
 function lobbyItemClick(item: HTMLElement) {
   user.gameClicked = true;
@@ -873,7 +875,7 @@ class StandardMainTextList {
   }
   render(textArray: Array<StandardMainText>) {
     if (this.fadeOutTimeout) {
-      clearInterval(this.fadeOutTimeout);
+      clearInterval(this.fadeOutTimeout as NodeJS.Timeout);
     }
     this.clear();
     this.container.alpha = 1;
@@ -1028,7 +1030,7 @@ function selectPlayer(username: string) {
           players[i].votedFor = true;
           firstTimeSelectingPlayer = false;
           if (firstTimeSelectingInterval) {
-            clearInterval(firstTimeSelectingInterval);
+            clearInterval(firstTimeSelectingInterval as NodeJS.Timeout);
           }
           players[i].select();
         }
@@ -1036,7 +1038,7 @@ function selectPlayer(username: string) {
       //stop running loop after 10 seconds if no match found
       firstTimeNumberOfRuns++;
       if (firstTimeNumberOfRuns > 100 && firstTimeSelectingInterval) {
-        clearInterval(firstTimeSelectingInterval);
+        clearInterval(firstTimeSelectingInterval as NodeJS.Timeout);
       }
     }, 100);
   } else {
@@ -1198,7 +1200,7 @@ class Gallows {
       this.counter++;
       this.sprite.texture = gallowsHangingAnimation[this.counter];
       if (this.counter == 3 && this.hangingInterval) {
-        clearInterval(this.hangingInterval);
+        clearInterval(this.hangingInterval as NodeJS.Timeout);
       }
     }, 25);
   }
